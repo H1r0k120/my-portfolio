@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import FeaturedWorks from "./components/FeaturedWorks";
+
 
 export default function Page() {
   // ナビのアクティブ状態管理（任意）
@@ -45,21 +47,7 @@ export default function Page() {
 
       {/* Featured Works */}
       <section id="featured-works" className="py-16 bg-white px-6">
-        <h2 className="text-3xl font-bold mb-12 text-center">おすすめ作品</h2>
-        <div className="max-w-5xl mx-auto grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-          {[1, 2, 3].map((i) => (
-            <div key={i} className="border rounded-lg shadow hover:shadow-lg transition-shadow cursor-pointer p-4 flex flex-col items-center">
-              <div className="w-full h-48 bg-gray-200 flex justify-center items-center mb-4 text-gray-500">作品画像{i}</div>
-              <h3 className="text-xl font-semibold mb-2">作品タイトル{i}</h3>
-              <button
-                onClick={() => alert(`作品${i}の詳細を見る（ここに詳細ページへのリンクを追加予定）`)}
-                className="mt-auto bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700"
-              >
-                くわしく見る
-              </button>
-            </div>
-          ))}
-        </div>
+        <FeaturedWorks />
       </section>
 
       {/* プロフィールセクション */}
