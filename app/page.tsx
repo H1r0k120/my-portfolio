@@ -1,101 +1,103 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { useState } from "react";
+
+export default function Page() {
+  // ナビのアクティブ状態管理（任意）
+  const [active, setActive] = useState("works");
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen flex flex-col">
+      {/* Header */}
+      <header className="bg-gray-900 text-white p-4 flex justify-between items-center sticky top-0 z-50">
+        <div className="text-xl font-bold cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+          Hiroki Portfolio
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
+        <nav className="space-x-6">
+          <button
+            className={`hover:underline ${active === "works" ? "underline" : ""}`}
+            onClick={() => {
+              document.getElementById("featured-works")?.scrollIntoView({ behavior: "smooth" });
+              setActive("works");
+            }}
+          >
+            作品一覧
+          </button>
+          <button
+            className={`hover:underline ${active === "profile" ? "underline" : ""}`}
+            onClick={() => {
+              document.getElementById("profile")?.scrollIntoView({ behavior: "smooth" });
+              setActive("profile");
+            }}
+          >
+            プロフィール
+          </button>
+        </nav>
+      </header>
+
+      {/* Heroセクション */}
+      <section className="flex-grow bg-gradient-to-r from-gray-300 via-indigo-200 to-purple-200 text-gray-800 flex flex-col justify-center items-center text-center p-12">
+        <h1 className="text-5xl font-extrabold mb-4">プログラミング×趣味の遊び場へようこそ！</h1>
+        <p className="text-xl max-w-xl">
+          楽しくコードを書いています。ここでは自作の作品や学びの記録を紹介しています。
+        </p>
+      </section>
+
+      {/* Featured Works */}
+      <section id="featured-works" className="py-16 bg-white px-6">
+        <h2 className="text-3xl font-bold mb-12 text-center">おすすめ作品</h2>
+        <div className="max-w-5xl mx-auto grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="border rounded-lg shadow hover:shadow-lg transition-shadow cursor-pointer p-4 flex flex-col items-center">
+              <div className="w-full h-48 bg-gray-200 flex justify-center items-center mb-4 text-gray-500">作品画像{i}</div>
+              <h3 className="text-xl font-semibold mb-2">作品タイトル{i}</h3>
+              <button
+                onClick={() => alert(`作品${i}の詳細を見る（ここに詳細ページへのリンクを追加予定）`)}
+                className="mt-auto bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700"
+              >
+                くわしく見る
+              </button>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* プロフィールセクション */}
+      <section id="profile" className="py-16 bg-gray-50 px-6 text-center max-w-3xl mx-auto">
+        <h2 className="text-3xl font-bold mb-6">プロフィール</h2>
+        <p className="text-lg">
+          こんにちは、Hirokiです。趣味でプログラミングを楽しみつつ、新しい技術にもどんどん挑戦しています。
+          普段はPythonを使った開発やデータ分析を中心に活動しています。  
+          趣味でWeb開発やゲーム制作にも挑戦中。    
+          新しい技術を学びながら、楽しく成長していきたいと思っています。
+        </p>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-6 text-center space-x-6">
         <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          href="https://github.com/your-github-username"
           target="_blank"
           rel="noopener noreferrer"
+          className="hover:underline"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
+          GitHub
         </a>
         <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          href="https://twitter.com/your-twitter-handle"
           target="_blank"
           rel="noopener noreferrer"
+          className="hover:underline"
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
+          Twitter
         </a>
         <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          href="https://linkedin.com/in/your-linkedin-id"
           target="_blank"
           rel="noopener noreferrer"
+          className="hover:underline"
         >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
+          LinkedIn
         </a>
       </footer>
     </div>
