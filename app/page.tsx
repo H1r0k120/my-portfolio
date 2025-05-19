@@ -61,10 +61,12 @@ export default function Page() {
         </p>
       </section>
 
+      <br />
+
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-6 text-center space-x-6">
         <a
-          href="https://github.com/your-github-username"
+          href="https://github.com/H1r0k120"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:underline"

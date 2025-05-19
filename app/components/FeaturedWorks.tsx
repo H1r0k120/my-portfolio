@@ -8,17 +8,18 @@ const works = [
     link: "/works/3d-platformer"
   },
   {
-    title: "Python Automation Script",
-    description: "Pythonで作った便利な自動化スクリプト集。",
-    imageUrl: "/images/python-automation.png",
-    link: "/works/python-automation"
+    title: "Music mood maker",
+    description: "気分を選ぶと、おすすめのSpotifyプレイリストを表示してくれるWebアプリ",
+    imageUrl: "/images/music-mood.png",
+    link: "/works/music-mood"
   },
   {
-    title: "React Todo App",
-    description: "Reactで作成したシンプルだけど使いやすいTodoアプリ。",
-    imageUrl: "/images/react-todo.png",
-    link: "/works/react-todo"
+    title: "百人一首ウェブアプリ",
+    description: "百人一首をランダム再生してくれるウェブアプリです。",
+    imageUrl: "/images/hyakuninn.png",
+    link: "/works/hyakuninn"
   },
+  
 ];
 
 export default function FeaturedWorks() {
@@ -37,7 +38,7 @@ export default function FeaturedWorks() {
                 src={work.imageUrl}
                 alt={work.title}
                 fill
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw,
                        (max-width: 1200px) 50vw,
                        33vw"
