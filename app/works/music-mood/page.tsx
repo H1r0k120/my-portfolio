@@ -18,12 +18,12 @@ export default function PlatformerDetail() {
       </p>
       <p className="mt-4 text-indigo-600 font-medium group-hover:underline">
         <a
-          href="https://github.com/H1r0k120/music-mood-maker"
+          href="https://music-mood-maker.vercel.app/"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:underline"
         >
-          GitHub
+          試してみる
         </a>
       </p>
       <br />
